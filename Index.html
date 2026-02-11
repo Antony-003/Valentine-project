@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Valentine ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #ff4b6e, #ff8fa3, #ffccd5, #ff4b6e);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* ===== SIDE IMAGE COLUMNS (NEW — DOESN'T TOUCH CENTER) ===== */
+
+.side-column {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    z-index: 1;
+}
+
+.left-side { left: 20px; }
+.right-side { right: 20px; }
+
+.couple-box {
+    background: rgba(255,255,255,0.18);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.couple-box img {
+    width: 100%;
+    border-radius: 12px;
+    height: 130px;
+    object-fit: cover;
+}
+
+.quote {
+    font-size: 13px;
+    margin-top: 8px;
+    line-height: 1.3;
+}
+
+/* ===== CENTER CARD — UNCHANGED ===== */
+
+.card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 40px rgba(0,0,0,0.2);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 34px;
+    text-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
+#typing {
+    font-size: 20px;
+    margin-top: 15px;
+    min-height: 30px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 14px 26px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    background: white;
+    color: #ff4b6e;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 20px white;
+}
+
+#loveMsg {
+    margin-top: 18px;
+    font-size: 22px;
+    display: none;
+    animation: pop 0.8s ease;
+}
+
+@keyframes pop {
+    0% {transform: scale(0);}
+    100% {transform: scale(1);}
+}
+
+#lovePhoto {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 15px;
+    display: none;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+/* Floating Hearts */
+
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: floatUp linear forwards;
+    opacity: 0.9;
+}
+
+@keyframes floatUp {
+    from {transform: translateY(100vh) scale(1);}
+    to {transform: translateY(-10vh) scale(1.6); opacity:0;}
+}
+
+/* Cursor Trail */
+
+.trail {
+    position: fixed;
+    font-size: 14px;
+    pointer-events: none;
+    animation: trailFade 1s linear forwards;
+}
+
+@keyframes trailFade {
+    to {opacity:0; transform: translateY(-10px);}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== LEFT SIDE COUPLE IMAGES ===== -->
+
+<div class="side-column left-side">
+    <div class="couple-box">
+        <img src="WhatsApp Image 2026-02-11 at 19.30.38.jpeg">
+        <div class="quote">“Two hearts, one beautiful journey 💕”</div>
+    </div>
+
+    <div class="couple-box">
+        <img src="WhatsApp Image 2026-02-11 at 19.30.38 (1).jpeg">
+        <div class="quote">“Love grows stronger every day 🌹”</div>
+    </div>
+</div>
+
+<!-- ===== RIGHT SIDE COUPLE IMAGES ===== -->
+
+<div class="side-column right-side">
+    <div class="couple-box">
+        <img src="WhatsApp Image 2026-02-11 at 19.26.35.jpeg">
+        <div class="quote">“Together is my favorite place 💖”</div>
+    </div>
+
+    <div class="couple-box">
+        <img src="WhatsApp Image 2026-02-11 at 19.27.55.jpeg">
+        <div class="quote">“You + Me = Forever ✨”</div>
+    </div>
+</div>
+
+<!-- ===== CENTER CARD — SAME AS BEFORE ===== -->
+
+<div class="card">
+    <h1>💖 Happy Valentine 💖</h1>
+
+    <div id="typing"></div>
+
+    <button onclick="showLove()">Click for Love ❤️</button>
+
+    <div id="loveMsg">
+        You are my favorite person in the universe 🌍💕
+    </div>
+
+    <img id="lovePhoto" src="WhatsApp Image 2026-02-11 at 19.29.07.jpeg">
+
+    <button onclick="toggleMusic()">🎵 Music</button>
+</div>
+
+<audio id="music" loop>
+  <source src="WhatsApp Audio 2026-02-07 at 19.07.43.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+/* typing */
+const text = "You make every heartbeat magical ✨";
+let i = 0;
+function typeWriter() {
+    if (i < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 60);
+    }
+}
+typeWriter();
+
+/* hearts */
+function makeHeart() {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = ["❤️","💖","💕","💗"][Math.floor(Math.random()*4)];
+    h.style.left = Math.random()*100 + "vw";
+    h.style.animationDuration = (3 + Math.random()*3) + "s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+}
+setInterval(makeHeart, 250);
+
+/* show love */
+function showLove() {
+    document.getElementById("loveMsg").style.display = "block";
+    document.getElementById("lovePhoto").style.display = "block";
+    confettiBurst();
+}
+
+/* confetti */
+function confettiBurst() {
+    for(let i=0;i<60;i++){
+        const c = document.createElement("div");
+        c.innerHTML="💗";
+        c.style.position="fixed";
+        c.style.left="50%";
+        c.style.top="50%";
+        c.style.fontSize="20px";
+        c.style.transition="1s";
+        document.body.appendChild(c);
+        setTimeout(()=>{
+            c.style.transform=`translate(${(Math.random()-0.5)*600}px, ${(Math.random()-0.5)*600}px)`;
+            c.style.opacity=0;
+        },10);
+        setTimeout(()=>c.remove(),1000);
+    }
+}
+
+/* music */
+function toggleMusic(){
+    const m=document.getElementById("music");
+    if(m.paused) m.play();
+    else m.pause();
+}
+
+/* cursor trail */
+document.addEventListener("mousemove", e=>{
+    const t=document.createElement("div");
+    t.className="trail";
+    t.innerHTML="💞";
+    t.style.left=e.pageX+"px";
+    t.style.top=e.pageY+"px";
+    document.body.appendChild(t);
+    setTimeout(()=>t.remove(),1000);
+});
+
+</script>
+
+</body>
+</html>

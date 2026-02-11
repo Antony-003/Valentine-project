@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine? 💖</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff4b6e, #ff9aa2);
+    overflow: hidden;
+}
+
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px; 
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+}
+
+h1 {
+    color: #ff4b6e;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 14px 28px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: #ff4b6e;
+    color: white;
+}
+
+#noBtn {
+    background: #ddd;
+    color: #333;
+    position: absolute;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh); opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>💖 Will You Be My Valentine Vikashini T? 💖</h1>
+
+    <button id="yesBtn" onclick="goNext()">YES ❤️</button>
+    <button id="noBtn">NO 😢</button>
+</div>
+
+<script>
+
+/* YES → go to your existing page */
+function goNext() {
+    window.location.href = "index.html";
+}
+
+/* NO button escapes */
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
+
+/* Floating hearts background */
+function makeHeart() {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+    h.style.left = Math.random()*100 + "vw";
+    h.style.animationDuration = (3 + Math.random()*3) + "s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+}
+setInterval(makeHeart, 400);
+
+</script>
+
+</body>
+</html>
